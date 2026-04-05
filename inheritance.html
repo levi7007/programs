@@ -1,0 +1,627 @@
+<html>
+<head>
+<title>Inheritance Functions</title>
+<style>
+ body {
+    font-family: Arial, sans-serif;
+    background:  #e8ebef;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 0;
+  }
+
+  .program {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .program h2 {
+    color: #4CAF50;
+    margin-top: 0;
+  }
+
+  .question {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+  }
+     .btn-container {
+    margin-top: 60px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: white;
+    color: #4CAF50;
+    border: none;
+    padding: 15px 35px;
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .btn:hover {
+    background: #333;
+    color: white;
+    transition: 0.3s;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>C++ PROGRAMS</h1>
+<div id="inheritance" class="program">
+    <h2>Inheritance Functions Questions</h2>
+<div class="program">
+<p class="question">1.Write a C++ program to create a class called Animal with a method called makeSound(). Create a derived class called Cat that overrides the makeSound() method to bark.</p>
+<pre>
+<xmp>#include <iostream>
+using namespace std;
+class Animal {
+public:
+    void makeSound() {
+        cout<<"Animal makes a sound"<<endl;
+    }
+};
+class Cat:public Animal{
+public:
+    void makeSound(){
+        cout<<"Cat says: Meow!"<<endl;
+    }
+};
+int main(){
+    Animal animal;
+    Cat cat;
+    animal.makeSound();
+    cat.makeSound();
+    return 0;
+}
+</xmp></pre>
+<h3>Output:</h3>
+    <pre>
+Animal makes a sound
+Cat says: Meow!
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">2.Write a C++ program to create a class called Vehicle with a method called drive(). Create a derived class called Car that overrides the drive() method to print "Repairing a car".</p>
+<pre>
+<xmp>#include<iostream>
+using namespace std;
+class Vehicle{
+public:
+void drive(){cout<<"Driving a vehicle\n";}
+};
+
+class Car:public Vehicle{
+public:
+void drive(){cout<<"Repairing a car\n";}
+};
+
+int main(){
+Vehicle v;
+Car c;
+v.drive();
+c.drive();
+return 0;
+}
+</xmp>
+</pre>
+
+<h3>Output:</h3>
+    <pre>
+Driving a vehicle
+Repairing a car
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">3.Write a C++ program to create a class called Shape with a method called getArea(). Create a derived class called Rectangle that overrides the getArea() method to calculate the area of a rectangle.</p>
+<pre>
+<xmp>#include<iostream>
+using namespace std;
+
+class Shape{
+public:
+    virtual void getArea(){
+        cout<<"Area of shape unknown"<<endl;
+    }
+};
+
+class Rectangle:public Shape{
+    int length,breadth;
+public:
+    Rectangle(int l,int b){
+        length=l;
+        breadth=b;
+    }
+    void getArea(){
+        cout<<"Area of rectangle="<<length*breadth<<endl;
+    }
+};
+int main(){
+    Shape s;
+    Rectangle r(5,3);
+    s.getArea();
+    r.getArea();
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+Area of shape unknown
+Area of rectangle=15
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">4.Write a C++ program to create a class called Employee with methods called work() and getSalary(). Create a derived class called HRManager that overrides the work() method and adds a new method called addEmployee().</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Employee{
+public:
+    void work(){
+        cout<<"Employee is working"<<endl;
+    }
+    void getSalary(){
+        cout<<"Employee salary is 50000"<<endl;
+    }
+};
+
+class HRManager:public Employee{
+public:
+    void work(){
+        cout<<"HR Manager is managing HR tasks"<<endl;
+    }
+    void addEmployee(){
+        cout<<"HR Manager added a new employee"<<endl;
+    }
+};
+
+int main(){
+    Employee e;
+    HRManager hr;
+    e.work();
+    e.getSalary();
+    hr.work();
+    hr.getSalary(); 
+    hr.addEmployee();
+
+    return 0;
+}
+</xmp>
+</pre>
+ <h3>Output:</h3>
+    <pre>
+Employee is working
+Employee salary is 50000
+HR Manager is managing HR tasks
+Employee salary is 50000
+HR Manager added a new employee
+Balance=1800
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">5.Write a C++ program to create a class known as "BankAccount" with methods called deposit() and withdraw(). Create a derived class called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class BankAccount{
+protected:
+    double balance;
+public:
+    BankAccount(double b){balance=b;}
+    void deposit(double amt){
+        balance+=amt;
+        cout<<"Deposited: "<<amt<<" | Balance: "<<balance<<endl;
+    }
+    virtual void withdraw(double amt){
+        balance-=amt;
+        cout<<"Withdrawn: "<<amt<<" | Balance: "<<balance<<endl;
+    }
+};
+
+class SavingsAccount:public BankAccount{
+public:
+    SavingsAccount(double b):BankAccount(b){}
+    void withdraw(double amt){
+        if(balance-amt<100){
+            cout<<"Cannot withdraw "<<amt<<". Minimum balance 100 required."<<endl;
+        }else{
+            balance-=amt;
+            cout<<"Withdrawn: "<<amt<<" | Balance: "<<balance<<endl;
+        }
+    }
+};
+int main(){
+    BankAccount b(500);
+    SavingsAccount s(500);
+    b.deposit(200);
+    b.withdraw(300);
+    s.deposit(200);
+    s.withdraw(550); 
+    s.withdraw(400); 
+    return 0;
+}
+</xmp>
+</pre>
+ <h3>Output:</h3>
+    <pre>
+Deposited: 200 | Balance: 700
+Withdrawn: 300 | Balance: 400
+Deposited: 200 | Balance: 700
+Cannot withdraw 550. Minimum balance 100 required.
+Withdrawn: 400 | Balance: 300
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">6.Write a C++ program to create a class called Animal with a method named move(). Create a derived class called Cheetah that overrides the move() method to run.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+
+class Animal{
+public:
+    void move(){
+        cout<<"Animal moves slowly"<<endl;
+    }
+};
+
+class Cheetah:public Animal{
+public:
+    void move(){
+        cout<<"Cheetah runs fast"<<endl;
+    }
+};
+
+int main(){
+    Animal a;
+    Cheetah c;
+
+    a.move(); // calls Animal's move
+    c.move(); // calls overridden move in Cheetah
+
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+Animal moves slowly
+Cheetah runs fast
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">7.Write a C++ program to create a class known as Person with methods called getFirstName() and getLastName(). Create a derived class called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Person{
+protected:
+    string firstName,lastName;
+public:
+    Person(string f,string l){
+        firstName=f;
+        lastName=l;
+    }
+    string getFirstName(){return firstName;}
+    virtual string getLastName(){return lastName;}
+};
+
+class Employee:public Person{
+    int employeeId;
+    string jobTitle;
+public:
+    Employee(string f,string l,int id,string title):Person(f,l){
+        employeeId=id;
+        jobTitle=title;
+    }
+    string getLastName(){
+        return lastName+" ("+jobTitle+")";
+    }
+    int getEmployeeId(){return employeeId;}
+};
+
+int main(){
+    Person p("John","Doe");
+    Employee e("Alice","Smith",101,"Manager");
+
+    cout<<"Person: "<<p.getFirstName()<<" "<<p.getLastName()<<endl;
+    cout<<"Employee: "<<e.getFirstName()<<" "<<e.getLastName()<<" | ID: "<<e.getEmployeeId()<<endl;
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+Person: John Doe
+Employee: Alice Smith (Manager) | ID: 101
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">8.Write a C++ program to create a class called Shape with methods called getPerimeter() and getArea(). Create a derived class called Circle that overrides the getPerimeter() and getArea() methods to calculate the area and perimeter of a circle.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Shape{
+public:
+    virtual void getPerimeter(){
+        cout<<"Perimeter not defined"<<endl;
+    }
+    virtual void getArea(){
+        cout<<"Area not defined"<<endl;
+    }
+};
+
+class Circle:public Shape{
+    float radius;
+public:
+    Circle(float r){radius=r;}
+    void getPerimeter(){
+        cout<<"Perimeter of circle="<<2*3.14*radius<<endl;
+    }
+    void getArea(){
+        cout<<"Area of circle="<<3.14*radius*radius<<endl;
+    }
+};
+
+int main(){
+    Shape s;
+    Circle c(5);
+    s.getPerimeter();
+    s.getArea();
+    c.getPerimeter();
+    c.getArea();
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+Perimeter not defined
+Area not defined
+Perimeter of circle=31.4
+Area of circle=78.5
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">9.Write a C++ program to create a vehicle class hierarchy. The base class should be Vehicle, with derived classes Truck, Car and Motorcycle. Each derived class should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Vehicle{
+protected:
+    string make,model,fuelType;
+    int year;
+public:
+    Vehicle(string mke,string mdl,int yr,string fuel){
+        make=mke;model=mdl;year=yr;fuelType=fuel;
+    }
+    virtual void fuelEfficiency()=0;
+    virtual void distanceTraveled(double hours, double speed)=0;
+    virtual void maxSpeed()=0;
+};
+
+class Truck:public Vehicle{
+    double loadCapacity;
+public:
+    Truck(string m,string mdl,int y,string fuel,double load):Vehicle(m,mdl,y,fuel){
+        loadCapacity=load;
+    }
+    void fuelEfficiency(){
+        cout<<"Truck Fuel Efficiency: 8 km/l"<<endl;
+    }
+    void distanceTraveled(double hours,double speed){
+        cout<<"Truck Distance: "<<hours*speed<<" km"<<endl;
+    }
+    void maxSpeed(){
+        cout<<"Truck Max Speed: 120 km/h"<<endl;
+    }
+};
+
+class Car:public Vehicle{
+public:
+    Car(string m,string mdl,int y,string fuel):Vehicle(m,mdl,y,fuel){}
+    void fuelEfficiency(){
+        cout<<"Car Fuel Efficiency: 15 km/l"<<endl;
+    }
+    void distanceTraveled(double hours,double speed){
+        cout<<"Car Distance: "<<hours*speed<<" km"<<endl;
+    }
+    void maxSpeed(){
+        cout<<"Car Max Speed: 180 km/h"<<endl;
+    }
+};
+
+class Motorcycle:public Vehicle{
+public:
+    Motorcycle(string m,string mdl,int y,string fuel):Vehicle(m,mdl,y,fuel){}
+    void fuelEfficiency(){
+        cout<<"Motorcycle Fuel Efficiency: 40 km/l"<<endl;
+    }
+    void distanceTraveled(double hours,double speed){
+        cout<<"Motorcycle Distance: "<<hours*speed<<" km"<<endl;
+    }
+    void maxSpeed(){
+        cout<<"Motorcycle Max Speed: 150 km/h"<<endl;
+    }
+};
+
+int main(){
+    Truck t("Volvo","FH16",2022,"Diesel",20);
+    Car c("Toyota","Corolla",2023,"Petrol");
+    Motorcycle m("Yamaha","R15",2021,"Petrol");
+    t.fuelEfficiency();
+    t.distanceTraveled(5,80);
+    t.maxSpeed();
+cout<<endl;
+
+    c.fuelEfficiency();
+    c.distanceTraveled(3,100);
+    c.maxSpeed();
+    cout<<endl;
+
+    m.fuelEfficiency();
+    m.distanceTraveled(2,120);
+    m.maxSpeed();
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+Truck Fuel Efficiency: 8 km/l
+Truck Distance: 400 km
+Truck Max Speed: 120 km/h
+
+Car Fuel Efficiency: 15 km/l
+Car Distance: 300 km
+Car Max Speed: 180 km/h
+
+Motorcycle Fuel Efficiency: 40 km/l
+Motorcycle Distance: 240 km
+Motorcycle Max Speed: 150 km/h
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">10.Write a C++ program that creates a class hierarchy for employees of a company. The base class should be Employee, with derived classes Manager, Developer, and Programmer. Each derived class should have properties such as name, address, salary, and job title. Implement methods for calculating bonuses, generating performance reports, and managing projects.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Employee{
+protected:
+    string name,address,jobTitle;
+    double salary;
+public:
+    Employee(string n,string ad,double sal,string title){
+        name=n; address=ad; salary=sal; jobTitle=title;
+    }
+    virtual void calculateBonus()=0;
+    virtual void performanceReport()=0;
+    virtual void manageProjects()=0;
+};
+
+class Manager:public Employee{
+public:
+    Manager(string n,string ad,double sal,string title):Employee(n,ad,sal,title){}
+    void calculateBonus(){
+        cout<<name<<" (Manager) Bonus: "<<salary*0.2<<endl;
+    }
+    void performanceReport(){
+        cout<<name<<" (Manager) Performance: Excellent"<<endl;
+    }
+    void manageProjects(){
+        cout<<name<<" (Manager) manages multiple projects"<<endl;
+    }
+};
+
+class Developer:public Employee{
+public:
+    Developer(string n,string ad,double sal,string title):Employee(n,ad,sal,title){}
+    void calculateBonus(){
+        cout<<name<<" (Developer) Bonus: "<<salary*0.15<<endl;
+    }
+    void performanceReport(){
+        cout<<name<<" (Developer) Performance: Good"<<endl;
+    }
+    void manageProjects(){
+        cout<<name<<" (Developer) contributes to assigned projects"<<endl;
+    }
+};
+
+class Programmer:public Employee{
+public:
+    Programmer(string n,string ad,double sal,string title):Employee(n,ad,sal,title){}
+    void calculateBonus(){
+        cout<<name<<" (Programmer) Bonus: "<<salary*0.1<<endl;
+    }
+    void performanceReport(){
+        cout<<name<<" (Programmer) Performance: Very Good"<<endl;
+    }
+    void manageProjects(){
+        cout<<name<<" (Programmer) writes and tests code for projects"<<endl;
+    }
+};
+
+int main(){
+    Manager m("Alice","New York",80000,"Manager");
+    Developer d("Bob","San Francisco",60000,"Developer");
+    Programmer p("Charlie","Los Angeles",50000,"Programmer");
+    m.calculateBonus();
+    m.performanceReport();
+    m.manageProjects();
+    cout<<endl;
+
+    d.calculateBonus();
+    d.performanceReport();
+    d.manageProjects();
+    cout<<endl;
+
+    p.calculateBonus();
+    p.performanceReport();
+    p.manageProjects();
+
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+Alice (Manager) Bonus: 16000
+Alice (Manager) Performance: Excellent
+Alice (Manager) manages multiple projects
+
+Bob (Developer) Bonus: 9000
+Bob (Developer) Performance: Good
+Bob (Developer) contributes to assigned projects
+
+Charlie (Programmer) Bonus: 5000
+Charlie (Programmer) Performance: Very Good
+Charlie (Programmer) writes and tests code for projects
+    </pre>
+</div>
+
+<div class="btn-container">
+<a href="index.html" class="btn">Home</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<html>
+<head>
+<title>Operator overloading</title>
+<style>
+ body {
+    font-family: Arial, sans-serif;
+    background:  #e8ebef;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 0;
+  }
+
+  .program {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .program h2 {
+    color: #4CAF50;
+    margin-top: 0;
+  }
+
+  .question {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+  }
+     .btn-container {
+    margin-top: 60px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: white;
+    color: #4CAF50;
+    border: none;
+    padding: 15px 35px;
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .btn:hover {
+    background: #333;
+    color: white;
+    transition: 0.3s;
+  }
+</style>
+</head>
+<body>
+<h1>C++ PROGRAMS</h1>
+<div id="opoverloading" class="program">
+    <h2>Operator overloading Questions</h2>
+<div class="program">
+<p class="question">1.Define a class Complex to represent complex numbers. Overload the + operator to add two complex numbers.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Complex {
+private:
+    float real,imag;
+public:
+    Complex(float r =0,float i=0){
+        real=r;
+        imag=i;
+    }
+        Complex operator +(Complex c){
+        Complex temp;
+        temp.real=real+c.real;
+        temp.imag=imag+c.imag;
+        return temp;
+    }
+    void display(){
+        cout<<real<<"+"<<imag<<"i"<<endl;
+    }
+};
+int main(){
+    Complex c1(2,9),c2(5,5),c3;
+    c3=c1+c2;
+    cout<<"Sum of complex numbers: ";
+    c3.display();
+    return 0;
+}
+</xmp></pre>
+<h3>Output:</h3>
+    <pre>
+Sum of complex numbers: 7 + 14i
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">2.Create a class Fraction to represent fractions. Overload the + operator to add two fractions.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Fraction{
+    float num;        
+    float den;         
+public:
+    Fraction(float n=0, float d=1){
+        num=n;
+        den=d;
+    }
+    Fraction operator +(Fraction  &obj){
+        Fraction temp;
+        temp.num = num*obj.den+obj.num*den;
+        temp.den = den*obj.den;
+        return temp;
+    }
+    void display(){
+        cout<<num<<"/"<<den<<endl;
+    }
+};
+int main(){
+    Fraction f1(2,6),f2(7,5),f3;
+    f3=f1+f2;
+    cout<<"Addtion of Both Fraction numbers are ";
+    f3.display();
+    return 0;
+}</xmp>
+</pre>
+
+<h3>Output:</h3>
+    <pre>
+Addtion of Both Fraction numbers are 52/30
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">3.Define a class Matrix to represent matrices. Overload the * operator to multiply two matrices.</p>
+<pre>
+<xmp>
+#include <iostream>
+using namespace std;
+class Matrix{
+    int row, colm;
+    int arr[10][10];
+public:
+    void input(){
+        cout<<"Enter rows: ";
+        cin>>row;
+        cout<<"Enter columns: ";
+        cin>>colm;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<colm;j++){
+                cin>>arr[i][j];   
+            }
+        }
+    }
+    Matrix operator *(Matrix obj){
+        Matrix result;
+        if(colm!=obj.row){
+            cout<<"Multiplication not possible!";
+            return result;
+        }
+        result.row=row;
+        result.colm=obj.colm;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<obj.colm;j++){
+                result.arr[i][j]=0;
+                for(int k=0;k<colm;k++){
+                    result.arr[i][j]+=arr[i][k]*obj.arr[k][j];
+                }
+            }
+        }
+        return result;
+    }
+    void display(){
+        for(int i=0;i<row;i++){
+            for(int j=0;j<colm;j++){
+                cout<<arr[i][j]<<" ";
+            }
+            cout<<endl;
+        }
+    }
+};
+int main(){
+    Matrix obj1,obj2,result;
+    cout<<"Enter first matrix:\n";
+    obj1.input();
+    cout<<"Enter second matrix:\n";
+    obj2.input();
+    result=obj1*obj2;
+    cout<<"Result matrix:\n";
+    result.display();
+    return 0;
+}</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter 1st matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+enter 2nd matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+subtraction is: 
+0 0
+0 0
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">4.Implement a class String to represent strings. Overload the + operator to concatenate two strings.</p>
+<pre>
+<xmp>
+#include<iostream>
+#include<cstring>
+using namespace std;
+class String {
+    char str[100];
+public:
+    String(){}
+    String(char s[]){
+        strcpy(str,s);
+    }
+    String operator +(String &obj){
+        String concat;
+        strcpy(concat.str,str);
+        strcat(concat.str,obj.str);
+        return concat;
+    }
+    void display(){
+        cout<<str<<endl;
+    }
+};
+int main(){
+    String obj1("Priyanshi chamola ");
+    String obj2("Bisht");
+    String obj3;
+    obj3=obj1+obj2;
+    cout<<"Concatenated string is: ";
+    obj3.display();
+
+    return 0;
+}
+</xmp>
+</pre>
+ <h3>Output:</h3>
+    <pre>
+Concated string is: Priyanshi chamolaBisht
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">5.Define a class Date to represent dates. Overload the < operator to compare two dates.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Date{
+    int date;
+    int year;
+    int month;
+    public:
+    Date(int d,int m,int y){
+        date=d;
+        year=y;
+        month=m;
+    }
+void operator <(Date &obj){
+    if(date<obj.date&&month<obj.month&&year<obj.year){
+      cout<<"Yes 1st Date is Smaller then the 2nd one "<<endl;
+    }
+else{
+    cout<<"No 1st Date is not Smaller then the 2nd one "<<endl;
+} 
+}
+};
+int main(){
+    Date obj1(23,4,2004);
+    Date obj2(25,3,2004);
+    obj1<obj2;
+}
+</xmp>
+</pre>
+ <h3>Output:</h3>
+    <pre>
+No 1st Date is not Smaller then the 2nd one
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">6.Implement a class Money to represent money. Overload the + operator to add two amounts of money.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Money{
+    int ruppes;
+    int paise;
+    public:
+    Money(){}
+    Money(int rp,int ps){
+        ruppes=rp;
+        paise=ps;
+    }
+   Money operator +(Money &obj){
+        Money res;
+        res.ruppes=ruppes+obj.ruppes;
+        res.paise=paise+obj.paise;
+        if(res.paise>=100){
+            res.ruppes+=res.paise/100;
+            res.paise=res.paise%100;
+        }
+        return res;
+    }
+    void display(){
+        cout<<"Total Money is : "<<ruppes<<"."<<paise;
+    }
+};
+int main(){
+    Money obj1(2648,88);
+    Money obj2(3777,98);
+    Money obj3;
+    obj3=obj1+obj2;
+    obj3.display();
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+Total Money is : 6426.86
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">7.Create a class Rectangle to represent rectangles. Overload the == operator to check if two rectangles are equal.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Rectangle{
+    int length;
+    int width;
+    public:
+    Rectangle(){}
+    Rectangle(int l,int w){
+        length=l;
+        width=w;
+    }
+    void operator ==(Rectangle &obj){
+if(length==obj.length && width==obj.width){
+    cout<<"Yes Both Rectangles are Equal.."<<endl;
+}
+else{
+    cout<<"No Rectangles are not Equal...."<<endl;
+}
+    }
+};
+int main(){
+    Rectangle obj1(22,99);
+    Rectangle obj2(22,89);
+    obj1==obj2;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+No Rectangles are not Equal....
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">8.Define a class Time to represent time. Overload the << operator to display the time in HH:MM format.</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+class Time{
+    int hour;
+    int minute;
+    public:
+    Time(int h,int m){
+        hour=h;
+        minute=m;
+    }
+    friend ostream& operator<<(ostream& out, Time t) {
+        if(t.hour<10)out<<"0";
+        out<<t.hour<<":";
+        if(t.minute<10)out<<"0";
+        out<<t.minute;
+        return out;
+    }
+};
+int main(){
+    Time t1(12,34);
+    cout<<t1;
+}
+
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+12:34
+    </pre>
+</div>
+<div class="btn-container">
+<a href="index.html" class="btn">Home</a>
+</div>
+
+</body>
+</html>

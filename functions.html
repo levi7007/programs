@@ -1,0 +1,339 @@
+<html>
+<head>
+<title>function</title>
+  
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background:  #e8ebef;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 0;
+  }
+
+  .program {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .program h2 {
+    color: #4CAF50;
+    margin-top: 0;
+  }
+
+  .question {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+  }
+    .btn-container {
+    margin-top: 60px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: white;
+    color: #4CAF50;
+    border: none;
+    padding: 15px 35px;
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .btn:hover {
+    background: #333;
+    color: white;
+    transition: 0.3s;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>C++ PROGRAMS</h1>
+
+<div id="functions" class="program">
+    <h2>Functions Questions</h2>
+<p class="question">1.Write a C++ method to find the smallest number among three numbers.</p>
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+void small(int s,int a,int b){
+    if(a&lt;b){
+        if(a&lt;s){
+            cout&lt;&lt;"smallest no is: "&lt;&lt;a&lt;&lt;endl;
+        }
+        else{
+            cout&lt;&lt;"smallest no is: "&lt;&lt;s&lt;&lt;endl;
+        }
+    }
+     if(b&lt;a){
+if(b&lt;s){
+    cout&lt;&lt;"smallest no is: "&lt;&lt;b&lt;&lt;endl;
+}
+else{
+    cout&lt;&lt;"smallest no is: "&lt;&lt;s&lt;&lt;endl;
+}
+    }
+}
+int main(){
+int x,y,z;
+cout&lt;&lt;"enter first number: ";
+cin&gt;&gt;x;
+cout&lt;&lt;"enter second number: ";
+cin&gt;&gt;y;
+cout&lt;&lt;"enter third number: ";
+cin&gt;&gt;z;
+small(x,y,z);
+    return 0;
+}
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter first number: 2
+enter second number: 3
+enter third number: 4
+smallest no is: 2
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">2. Write a C++ method to compute the average of three numbers.</p>
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+void avg(int c,int a,int b){
+    int avg=(a+b+c)/3;
+    cout&lt;&lt;"average is: "&lt;&lt;avg;
+}
+int main(){
+int x,y,z;
+cout&lt;&lt;"enter first number: ";
+cin&gt;&gt;x;
+cout&lt;&lt;"enter second number: ";
+cin&gt;&gt;y;
+cout&lt;&lt;"enter third number: ";
+cin&gt;&gt;z;
+avg(x,y,z);
+    return 0;
+}
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter first number: 2
+enter second number: 3
+enter third number: 4
+average is: 3
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">3.Write a C++ method to display the middle character of a string</p>
+<pre>
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+void avg(char a[]){
+    int l,m;
+    l=strlen(a);
+    m=l/2;
+    cout&lt;&lt;"middle character of the string is: "&lt;&lt;a[m];
+}
+int main(){
+char x[20];
+cout&lt;&lt;"enter the string ";
+cin&gt;&gt;x;
+avg(x);
+    return 0;
+}
+</pre>
+<h3>Output:</h3>
+    <pre>
+ enter the string: sarahh
+middle character of the string is: a
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">4.Write a C++ method to find all twin prime numbers less than 100.</p>
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+void prime(){
+    for(int i=2;i&lt;100;i++){
+int count=0;
+for(int j=1;j&lt;=i;j++){
+    if(i%j==0)
+        count++;
+}
+int count2=0;
+for(int j=1;j&lt;=i+2;j++){
+    if((i+2)%j==0)
+        count2++;
+}
+if(count==2&amp;&amp;count2==2){
+    cout&lt;&lt;i&lt;&lt;" "&lt;&lt;i+2&lt;&lt;endl;
+}
+}
+}
+int main(){
+    cout&lt;&lt;"twin prime numbers less than 100 are : "&lt;&lt;endl;
+    prime();
+return 0;
+}
+</pre>
+ <h3>Output:</h3>
+    <pre>
+twin prime numbers less than 100 are :      
+3 5
+5 7
+11 13
+17 19
+29 31
+41 43
+59 61
+71 73
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">5.Write a C++ method to count the number of digits in an integer with the value 2.</p>
+<pre>
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int integer(char num[]){
+ int l,count=0;
+ l=strlen(num);
+ for(int i=0;i&lt;l;i++){
+    if(num[i]=='2'){
+        count++;
+    }
+ }
+ return count;
+}
+int main(){
+char ch[10];
+cout&lt;&lt;"enter a non-negative integer: ";
+cin&gt;&gt;ch;
+cout&lt;&lt;"the number of digits in an integer with the value 2 is: "&lt;&lt;integer(ch);
+    return 0;
+}
+</pre>
+ <h3>Output:</h3>
+    <pre>
+enter a non-negative integer: 4213
+the number of digits in an integer with the value 2 is: 1
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">6. Write a C++ method that accepts three integers and checks whether they are consecutive or not.</p>
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+void con(int a,int b,int c){
+    int p,p2;
+    p=a+1;
+p2=b+1;
+    if(b==p&amp;&amp;c==p2){
+        cout&lt;&lt;"true";
+    }
+    else {
+        cout&lt;&lt;"false";
+    }
+}
+int main(){
+    int x,y,z;
+    cout&lt;&lt;"enter 1st number: ";
+    cin&gt;&gt;x;
+    cout&lt;&lt;"enter 2nd number: ";
+    cin&gt;&gt;y;
+    cout&lt;&lt;"enter 3rd number: ";
+    cin&gt;&gt;z;
+    con(x,y,z);
+    return 0;
+}
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter 1st number: 2
+enter 2nd number: 3
+enter 3rd number: 4
+true
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">7.Write a C++ method that checks whether all characters are vowels</p>
+<pre>
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+void vowel(char ch[]){
+    int i,l,count=0;
+    l=strlen(ch);
+    for(i=0;i&lt;l;i++){
+if((ch[i]!='a'&amp;&amp;ch[i]!='e'&amp;&amp;ch[i]!='i'&amp;&amp;ch[i]!='o'&amp;&amp;ch[i]!='u')){
+count=0;
+    }
+    else{
+        count++;
+    }
+    if((ch[i]!='A'&amp;&amp;ch[i]!='E'&amp;&amp;ch[i]!='I'&amp;&amp;ch[i]!='O'&amp;&amp;ch[i]!='U')){
+count=0;
+    }
+    else{
+        count++;
+    }
+}
+if(count!=0){
+    cout&lt;&lt;"true";
+}
+else{
+    cout&lt;&lt;"false";
+}
+}
+int main(){
+char str[10];
+cout&lt;&lt;"enter the string : ";
+cin&gt;&gt;str;
+vowel(str);
+    return 0;
+}
+</pre>
+<h3>Output:</h3>
+    <pre>
+  enter the string : hello
+false
+    </pre>
+</div>
+
+<div class="btn-container">
+<a href="index.html" class="btn">Home</a>
+</div>
+
+</body>
+</html>

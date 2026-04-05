@@ -1,0 +1,693 @@
+<html>
+<head>
+<title>Multiple Array</title>
+<style>
+ body {
+    font-family: Arial, sans-serif;
+    background:  #e8ebef;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 0;
+  }
+
+  .program {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .program h2 {
+    color: #4CAF50;
+    margin-top: 0;
+  }
+
+  .question {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+  }
+     .btn-container {
+    margin-top: 60px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: white;
+    color: #4CAF50;
+    border: none;
+    padding: 15px 35px;
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .btn:hover {
+    background: #333;
+    color: white;
+    transition: 0.3s;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>C++ PROGRAMS</h1>
+<div id="marray" class="program">
+    <h2>Multi- Array Questions</h2>
+<div class="program">
+<p class="question">1.Write a C++ program to enter a martix from the user and display it</p>
+<pre>
+<xmp>#include<iostream>
+using namespace std;
+int main(){
+    int i,j;
+    int a,b;
+    cout<<"enter the number of rows: ";
+    cin>>a;
+    cout<<"enter the number of columns: ";
+    cin>>b;
+    int mat[a][b];
+    cout<<"enter the matrix: "<<endl;
+    for(i=0;i<a;i++){
+        for(j=0;j<b;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+     cout<<"Matrix is: "<<endl;
+    for(i=0;i<a;i++){
+        for(j=0;j<b;j++){
+            cout<<mat[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}
+</xmp></pre>
+<h3>Output:</h3>
+    <pre>
+enter the number of rows: 2
+enter the number of columns: 2
+enter the matrix: 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+Matrix is: 
+1 2
+3 4
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">2.Enter two Matrices from user, add the matrices and display the answer?</p>
+<pre>
+<xmp>#include<iostream>
+using namespace std;
+int main(){
+    int mat[2][2],i,j;
+    int mat2[2][2];
+    int add[2][2];
+    cout<<"enter 1st matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+    cout<<"enter 2nd matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat2[i][j];
+        }
+    }
+    cout<<"adition is: "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+           add[i][j]=mat2[i][j]+mat[i][j];
+           cout<<add[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}</xmp>
+</pre>
+
+<h3>Output:</h3>
+    <pre>
+enter 1st matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+enter 2nd matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+adition is: 
+2 4
+6 8
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">3.Enter two Matrices from user, subtract the matrices and display the answer?</p>
+<pre>
+<xmp>#include<iostream>
+using namespace std;
+int main(){
+    int mat[2][2],i,j;
+    int mat2[2][2];
+    int sub[2][2];
+    cout<<"enter 1st matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+    cout<<"enter 2nd matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat2[i][j];
+        }
+    }
+    cout<<"subtraction is: "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+           sub[i][j]=mat2[i][j]-mat[i][j];
+           cout<<sub[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter 1st matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+enter 2nd matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+subtraction is: 
+0 0
+0 0
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">4.Enter two Matrices from user, multiply the matrices and display the answer?</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+    int mat[2][2],i,j;
+    int mat2[2][2];
+    int mul[2][2];
+    cout<<"enter 1st matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+    cout<<"enter 2nd matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat2[i][j];
+        }
+    }
+    cout<<"multiplication is: "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+           mul[i][j]=mat2[i][j]*mat[i][j];
+           cout<<mul[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}
+</xmp>
+</pre>
+ <h3>Output:</h3>
+    <pre>
+enter 1st matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+enter 2nd matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+multiplication is: 
+1 4
+9 16
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">5.Enter a Matrix from user, copy it in another matrix of same size?</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+    int mat[2][2],i,j;
+    int cpy[2][2];
+    cout<<"enter 1st matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+    cout<<"copied matrix is: "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+           cpy[i][j]=mat[i][j];
+           cout<<cpy[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}
+</xmp>
+</pre>
+ <h3>Output:</h3>
+    <pre>
+enter 1st matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+copied matrix is: 
+1 2
+3 4
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">6.Enter the Matrix from user, multiply it with a scalar value and display the answer?</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+    int mat[2][2],i,j;
+    int scaler;
+    cout<<"enter 1st matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+    cout<<"scaler multiplation is: "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+          scaler=5*mat[i][j];
+           cout<<scaler<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter 1st matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+scaler multiplation is: 
+5 10
+15 20
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">7.Program to determine whether two matrices are equal</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+    int mat[2][2],i,j;
+    int mat2[2][2];
+    int c=0;
+    cout<<"enter 1st matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+    cout<<"enter 2nd matrix(2x2): "<<endl;
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            cout<<"enter: ";
+            cin>>mat2[i][j];
+        }
+    }
+    for(i=0;i<2;i++){
+        for(j=0;j<2;j++){
+            if(mat[i][j]==mat2[i][j]){
+                c++;
+            }
+        }}
+        if(c==4){
+            cout<<"both are same";
+        }
+        else{
+            cout<<"both are not same";
+        }
+       
+
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+  enter 1st matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+enter 2nd matrix(2x2): 
+enter: 1
+enter: 2
+enter: 3
+enter: 4
+both are same
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">8.Program to display the upper triangular matrix</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+int arr[3][3];
+int x=0;
+cout<<"enter the martrix: "<<endl;
+for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        cout<<"enter elements: ";
+        cin>>arr[i][j];
+    }
+}
+cout<<"upper triangular matrix is: "<<endl;
+for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        if(arr[i]>arr[j]){
+            arr[i][j]=x;
+        }
+        cout<<arr[i][j]<<" ";
+    }
+    cout<<endl;
+}
+
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+ enter elements: 1
+enter elements: 2
+enter elements: 3
+enter elements: 4
+enter elements: 5
+enter elements: 6
+enter elements: 7
+enter elements: 8
+enter elements: 9
+upper triangular matrix is: 
+1 2 3
+0 5 6
+0 0 9
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">9.Program to display the lower triangular matrix</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+    int mat[3][3];
+    int x=0;
+    cout<<"enter the matrix(3x3): "<<endl;
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            cout<<"enter: ";
+            cin>>mat[i][j];
+        }
+    }
+    cout<<"lower triangular matrix is: "<<endl;
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            if(mat[i]<mat[j]){
+                mat[i][j]=x;
+            }
+            cout<<mat[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+ enter elements: 1
+enter elements: 2
+enter elements: 3
+enter elements: 4
+enter elements: 5
+enter elements: 6
+enter elements: 7
+enter elements: 8
+enter elements: 9
+upper triangular matrix is: 
+1 0 0
+4 5 0 
+7 8 9
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">10.Program to find the frequency of odd & even numbers in the given matrix</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+int arr[2][2];
+int x=0,y=0;
+cout<<"enter the martrix: "<<endl;
+for(int i=0;i<2;i++){
+    for(int j=0;j<2;j++){
+        cout<<"enter elements: ";
+        cin>>arr[i][j];
+    }
+}
+for(int i=0;i<2;i++){
+    for(int j=0;j<2;j++){
+        if((arr[i][j])%2==0){
+            x++;
+        }   
+    }
+} 
+for(int i=0;i<2;i++){
+    for(int j=0;j<2;j++){
+        if((arr[i][j])%2!=0){
+            y++;
+        }   
+    }
+} 
+ cout<<"frequency of even number in the matrix is: "<<x<<endl;
+  cout<<"frequency of odd number in the matrix is: "<<y<<endl;
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter the martrix: 
+enter elements: 1
+enter elements: 2
+enter elements: 3
+enter elements: 4
+frequency of even number in the matrix is: 2
+frequency of odd number in the matrix is: 2  
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">11.Program to find the sum of each row and each column of a matrix</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+int arr[2][2];
+cout<<"enter the martrix: "<<endl;
+for(int i=0;i<2;i++){
+    for(int j=0;j<2;j++){
+        cout<<"enter elements: ";
+        cin>>arr[i][j];
+    }
+}
+cout<<"matrix is: "<<endl;
+for(int i=0;i<2;i++){
+    for(int j=0;j<2;j++){
+        cout<<arr[i][j]<<" ";
+    }
+    cout<<endl;
+}
+for(int j=0;j<2;j++){
+   int x=0;
+   for(int i=0;i<2;i++){
+   x=x+arr[j][i];
+   }  
+   cout<<"sum of row "<<j+1<<" is: "<<x<<endl;
+}
+
+for(int i=0;i<2;i++){
+    int x=0;
+      for(int j=0;j<2;j++){
+   x=x+arr[j][i];
+   }  
+    cout<<"sum of column "<<i+1<<" is: "<<x<<endl;
+    
+} 
+ 
+  
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter the martrix: 
+enter elements: 1
+enter elements: 2
+enter elements: 3
+enter elements: 4
+matrix is: 
+1 2
+3 4
+sum of row 1 is: 3
+sum of row 2 is: 7
+sum of column 1 is: 4
+sum of column 2 is: 6 
+    </pre>
+</div>
+
+<div class="program">
+<p class="question">12.Program to determine whether a given matrix is an identity matrix</p>
+<pre>
+<xmp>
+#include<iostream>
+using namespace std;
+int main(){
+int arr[3][3];
+int x=0;
+cout<<"enter matrix: "<<endl;
+for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        cout<<"enter elements: ";
+        cin>>arr[i][j];
+    }
+}
+for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+       if(arr[i]==arr[j]){
+        if((arr[i]!=arr[j])==0)
+        cout<<"it is an identity matrix"<<endl;
+       }
+    }
+}
+for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+        cout<<arr[i][j]<<" ";
+    }
+    cout<<endl;
+}
+
+    return 0;
+}
+</xmp>
+</pre>
+<h3>Output:</h3>
+    <pre>
+enter the martrix: 
+enter elements: 1
+enter elements: 2
+enter elements: 3
+enter elements: 4
+enter elements: 5
+enter elements: 6
+enter elements: 7
+enter elements: 8
+enter elements: 9
+1 2 3
+4 5 6
+7 8 9
+not an identity matrix
+    </pre>
+</div>
+
+<div class="btn-container">
+<a href="index.html" class="btn">Home</a>
+</div>
+
+</body>
+</html>
